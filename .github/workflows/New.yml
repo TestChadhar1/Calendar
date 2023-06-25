@@ -26,6 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
             pip install google-api-python-client
+            pip install google-auth-oauthlib
 
       - name: Run Python script
-        run: python your_script.py
+        run: python Code.py
