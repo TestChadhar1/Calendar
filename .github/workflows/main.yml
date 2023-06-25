@@ -2,7 +2,7 @@ name: Schedule Python Script
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/30 * * * *"
 
 jobs:
   run_script:
@@ -15,7 +15,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  # Specify the desired Python version
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install google-api-python-client
 
       - name: Run Python script
         run: python Code.py
