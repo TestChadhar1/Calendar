@@ -2,7 +2,7 @@ name: Schedule Python Script
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   run_script:
@@ -16,9 +16,16 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
+          
+      - name: Clean up environment
+        run: |
+             pip uninstall -y google-api-python-client
+             pip install --upgrade pip
 
+          
       - name: Install dependencies
-        run: pip install google-api-python-client
+        run: |
+             pip install google-api-python-client==2.10.0
 
       - name: Run Python script
         run: python Code.py
